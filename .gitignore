@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+*.csv
+clientes.db
+.env
+assets/
+csv/
+CLAUDE.md

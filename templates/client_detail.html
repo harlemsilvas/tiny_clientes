@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ client.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <main class="detail-shell">
+      <section class="detail-header">
+        <div>
+          <p class="crumbs"><a href="{{ url_for('index') }}">Clientes e Fornecedores</a></p>
+          <h1>{{ client.name }}</h1>
+          <p class="detail-subtitle">{{ client.fantasy_name or client.person_type or "Cadastro local" }}</p>
+        </div>
+        <div class="header-actions">
+          <a class="primary-link" href="{{ url_for('edit_client', client_id=client.id) }}">Editar cadastro</a>
+          <form method="post" action="{{ url_for('delete_client', client_id=client.id) }}" onsubmit="return confirm('Excluir este cadastro?');">
+            <button type="submit" class="danger-button">Excluir</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="detail-grid">
+        <article class="detail-card">
+          <div class="section-heading">
+            <h2>Dados cadastrais</h2>
+            <p>Informacoes principais</p>
+          </div>
+          <dl class="detail-list">
+            <div><dt>Codigo</dt><dd>{{ client.code or "-" }}</dd></div>
+            <div><dt>ID original</dt><dd>{{ client.source_id or "-" }}</dd></div>
+            <div><dt>Documento</dt><dd>{{ client.document or "-" }}</dd></div>
+            <div><dt>Tipo da pessoa</dt><dd>{{ client.person_type or "-" }}</dd></div>
+            <div><dt>Status</dt><dd>{{ client.status or "-" }}</dd></div>
+            <div><dt>Segmento</dt><dd>{{ client.segment or "-" }}</dd></div>
+            <div><dt>Vendedor</dt><dd>{{ client.salesperson or "-" }}</dd></div>
+            <div><dt>Regime tributario</dt><dd>{{ client.tax_regime_code or "-" }}</dd></div>
+          </dl>
+        </article>
+
+        <article class="detail-card">
+          <div class="section-heading">
+            <h2>Endereco</h2>
+            <p>Dados do cadastro</p>
+          </div>
+          <dl class="detail-list">
+            <div><dt>CEP</dt><dd>{{ client.zip_code or "-" }}</dd></div>
+            <div><dt>Cidade</dt><dd>{{ client.city or "-" }}</dd></div>
+            <div><dt>UF</dt><dd>{{ client.state or "-" }}</dd></div>
+            <div><dt>Bairro</dt><dd>{{ client.district or "-" }}</dd></div>
+            <div class="full"><dt>Endereco completo</dt><dd>{{ client.full_address() or "-" }}</dd></div>
+          </dl>
+        </article>
+
+        <article class="detail-card">
+          <div class="section-heading">
+            <h2>Contato</h2>
+            <p>Canais disponiveis</p>
+          </div>
+          <dl class="detail-list">
+            <div><dt>Telefone</dt><dd>{{ client.phone or "-" }}</dd></div>
+            <div><dt>Celular</dt><dd>{{ client.mobile or "-" }}</dd></div>
+            <div><dt>Email</dt><dd>{{ client.email or "-" }}</dd></div>
+            <div><dt>Email NFe</dt><dd>{{ client.invoice_email or "-" }}</dd></div>
+            <div><dt>WebSite</dt><dd>{{ client.website or "-" }}</dd></div>
+            <div><dt>Tipos de contato</dt><dd>{{ client.contact_types or "-" }}</dd></div>
+            <div class="full"><dt>Observacoes do contato</dt><dd>{{ client.contact_notes or "-" }}</dd></div>
+          </dl>
+        </article>
+
+        <article class="detail-card">
+          <div class="section-heading">
+            <h2>Observacoes</h2>
+            <p>Anotacoes e dados complementares</p>
+          </div>
+          <dl class="detail-list">
+            <div><dt>Naturalidade</dt><dd>{{ client.birthplace or "-" }}</dd></div>
+            <div><dt>Data nascimento</dt><dd>{{ client.birth_date or "-" }}</dd></div>
+            <div><dt>Profissao</dt><dd>{{ client.profession or "-" }}</dd></div>
+            <div><dt>Estado civil</dt><dd>{{ client.marital_status or "-" }}</dd></div>
+            <div class="full"><dt>Observacoes gerais</dt><dd>{{ client.notes or "-" }}</dd></div>
+          </dl>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="page-top">
+        <div>
+          <p class="crumbs">Clientes e Fornecedores</p>
+          <h1>Painel de clientes</h1>
+        </div>
+        <a class="primary-link" href="{{ url_for('create_client') }}">Incluir cadastro</a>
+      </section>
+
+      <section class="toolbar-card">
+        <form class="search-row" method="get">
+          <div class="search-input">
+            <span>Pesquisar</span>
+            <input type="text" name="q" value="{{ filters.q }}" placeholder="Nome, fantasia, email, CPF ou CNPJ">
+          </div>
+          <div class="mini-filter">
+            <span>UF</span>
+            <select name="state">
+              <option value="">Todos</option>
+              {% for item in states %}
+              <option value="{{ item }}" {% if filters.state == item %}selected{% endif %}>{{ item }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mini-filter">
+            <span>Cidade</span>
+            <input type="text" name="city" value="{{ filters.city }}" placeholder="Digite a cidade">
+          </div>
+          <button type="submit">Buscar</button>
+          <a class="ghost-link" href="{{ url_for('index') }}">Limpar</a>
+        </form>
+        <div class="toolbar-meta">
+          <p>Exibindo pela ordem alfabetica</p>
+          <div class="toolbar-actions">
+            <span>{{ total_results }} registro(s)</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <div class="content-card">
+          <table class="clients-table">
+            <thead>
+              <tr>
+                <th>Codigo</th>
+                <th>Nome</th>
+                <th>CPF/CNPJ</th>
+                <th>Cidade</th>
+                <th>Telefone</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for client in clients %}
+              <tr>
+                <td>{{ client.code or "-" }}</td>
+                <td>
+                  <a class="client-link" href="{{ url_for('view_client', client_id=client.id) }}">{{ client.name }}</a>
+                  {% if client.fantasy_name %}
+                  <small>{{ client.fantasy_name }}</small>
+                  {% endif %}
+                </td>
+                <td>{{ client.document or "-" }}</td>
+                <td>{{ client.city or "-" }}{% if client.state %}/{{ client.state }}{% endif %}</td>
+                <td>{{ client.mobile or client.phone or "-" }}</td>
+                <td>{{ client.status or "-" }}</td>
+                <td class="row-actions">
+                  <a href="{{ url_for('view_client', client_id=client.id) }}">Ver</a>
+                  <a href="{{ url_for('edit_client', client_id=client.id) }}">Editar</a>
+                  <form method="post" action="{{ url_for('delete_client', client_id=client.id) }}" onsubmit="return confirm('Excluir este cadastro?');">
+                    <button type="submit" class="danger-link">Excluir</button>
+                  </form>
+                </td>
+              </tr>
+              {% else %}
+              <tr>
+                <td colspan="7" class="empty">Nenhum cliente encontrado com os filtros atuais.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <div class="pagination">
+            {% if page > 1 %}
+            <a href="{{ url_for('index', q=filters.q, state=filters.state, city=filters.city, page=page-1) }}">Anterior</a>
+            {% else %}
+            <span></span>
+            {% endif %}
+            <span>Pagina {{ page }} de {{ total_pages }}</span>
+            {% if page < total_pages %}
+            <a href="{{ url_for('index', q=filters.q, state=filters.state, city=filters.city, page=page+1) }}">Proxima</a>
+            {% else %}
+            <span></span>
+            {% endif %}
+          </div>
+        </div>
+
+        <aside class="sidebar-card">
+          <div class="sidebar-section">
+            <h2>Informacoes</h2>
+            <ul class="stat-stack">
+              <li><span>Quantidade de contatos</span><strong>{{ stats.total_clients }}</strong></li>
+              <li><span>Estados</span><strong>{{ stats.total_states }}</strong></li>
+              <li><span>Cidades</span><strong>{{ stats.total_cities }}</strong></li>
+              <li><span>Com email</span><strong>{{ stats.with_email }}</strong></li>
+            </ul>
+          </div>
+          <div class="sidebar-section">
+            <h2>Top estados</h2>
+            <ul class="state-ranking">
+              {% for state_name, count in top_states %}
+              <li><span>{{ state_name }}</span><strong>{{ count }}</strong></li>
+              {% else %}
+              <li><span>Sem dados</span><strong>0</strong></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
