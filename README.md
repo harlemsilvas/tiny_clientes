@@ -1,21 +1,67 @@
 # Tiny Clientes
 
-Projeto simples para:
+Aplicacao web simples para importar um arquivo CSV de clientes para um banco local e consultar os dados por uma interface web.
 
-- ler um arquivo CSV de clientes;
-- importar os dados para um banco local;
-- abrir uma pagina web para pesquisa e visualizacao.
+## Preview
+
+Painel de busca:
+
+![Painel de clientes](docs/images/dashboard-preview.svg)
+
+Tela de cadastro e edicao:
+
+![Formulario de cliente](docs/images/client-form-preview.svg)
+
+## O que o projeto faz
+
+- importa clientes de um arquivo CSV;
+- salva os dados em `SQLite` por padrao;
+- permite usar `PostgreSQL` via `DATABASE_URL`;
+- oferece busca, filtros e paginacao;
+- permite visualizar, editar, criar e excluir cadastros.
 
 ## Stack
 
+- `Python 3`
 - `Flask`
 - `SQLAlchemy`
-- `SQLite` por padrao
-- `PostgreSQL` opcional via `DATABASE_URL`
+- `SQLite`
+- `PostgreSQL` opcional
 
-## Como rodar
+## Estrutura
 
-1. Criar um ambiente virtual:
+```text
+.
+|-- app.py
+|-- csv_importer.py
+|-- models.py
+|-- config.py
+|-- requirements.txt
+|-- run.sh
+|-- templates/
+|-- static/
+`-- .env.example
+```
+
+## Execucao rapida
+
+No WSL ou Linux:
+
+```bash
+chmod +x run.sh
+./run.sh
+```
+
+O script:
+
+- cria `.venv` se necessario;
+- instala dependencias se estiverem faltando;
+- importa o CSV para o banco se `clientes.db` ainda nao existir;
+- sobe a aplicacao em `http://127.0.0.1:5000`.
+
+## Execucao manual
+
+1. Criar ambiente virtual:
 
 ```bash
 python3 -m venv .venv
@@ -28,7 +74,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-3. Importar o CSV para o banco:
+3. Importar o CSV:
 
 ```bash
 python csv_importer.py
@@ -40,32 +86,56 @@ python csv_importer.py
 flask --app app run --debug
 ```
 
-Abra `http://127.0.0.1:5000`.
+## Configuracao
+
+Copie o arquivo de exemplo:
+
+```bash
+cp .env.example .env
+```
+
+Exemplo:
+
+```env
+DATABASE_URL=sqlite:////mnt/c/Projetos/tiny_clientes/clientes.db
+CSV_FILE=/mnt/c/Projetos/tiny_clientes/contatos_unificado.csv
+SECRET_KEY=tiny-clientes-local
+```
 
 ## Banco padrao
 
-Sem configurar nada, o projeto cria o arquivo local `clientes.db`.
+Sem configuracao extra, o projeto usa `SQLite` local no arquivo `clientes.db`.
+
+Para o volume atual de cerca de `12.500` clientes, `SQLite` atende bem para uso local com filtros e CRUD simples.
 
 ## PostgreSQL opcional
 
-Se quiser usar PostgreSQL local no WSL, crie um arquivo `.env` com algo assim:
+Se quiser usar PostgreSQL local no WSL:
 
 ```env
 DATABASE_URL=postgresql+psycopg://postgres:postgres@localhost:5432/clientes
 CSV_FILE=/mnt/c/Projetos/tiny_clientes/contatos_unificado.csv
+SECRET_KEY=tiny-clientes-local
 ```
 
-Depois rode novamente:
+Depois rode:
 
 ```bash
 python csv_importer.py
 flask --app app run --debug
 ```
 
-## Filtros da tela
+## Funcionalidades
 
 - busca por nome, fantasia, documento, email e telefone;
 - filtro por estado;
 - filtro por cidade;
-- paginacao de resultados;
+- pagina de detalhe do cliente;
+- criacao, edicao e exclusao de cadastro;
 - resumo com totais e ranking por estado.
+
+## Observacoes
+
+- os arquivos CSV, banco local e assets de referencia estao fora do versionamento pelo `.gitignore`;
+- o importador tenta lidar com pequenas inconsistencias de formato no CSV.
+- os previews versionados em `docs/images/` sao ilustracoes limpas para o GitHub, separadas dos assets brutos locais.

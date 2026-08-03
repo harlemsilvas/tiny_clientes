@@ -1,0 +1,75 @@
+<svg width="1440" height="860" viewBox="0 0 1440 860" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="860" fill="#F5F8FB"/>
+  <rect x="48" y="40" width="1344" height="780" rx="28" fill="#FFFFFF" stroke="#E5EBF2"/>
+  <text x="96" y="108" fill="#2A3850" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="34" font-weight="700">Painel de Clientes</text>
+  <text x="96" y="142" fill="#708096" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="18">Busca, filtros, listagem e resumo lateral</text>
+
+  <rect x="96" y="182" width="860" height="88" rx="20" fill="#FFFFFF" stroke="#E5EBF2"/>
+  <rect x="120" y="204" width="430" height="44" rx="14" fill="#F4F7FA"/>
+  <text x="142" y="232" fill="#8795A8" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="16">Pesquisar por nome, fantasia, email ou CPF/CNPJ</text>
+  <rect x="570" y="204" width="110" height="44" rx="14" fill="#F4F7FA"/>
+  <text x="607" y="232" fill="#57677E" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="16">UF</text>
+  <rect x="696" y="204" width="160" height="44" rx="14" fill="#F4F7FA"/>
+  <text x="733" y="232" fill="#57677E" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="16">Cidade</text>
+  <rect x="874" y="204" width="82" height="44" rx="14" fill="#33B05A"/>
+  <text x="895" y="232" fill="#FFFFFF" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="16" font-weight="700">Buscar</text>
+
+  <rect x="96" y="294" width="900" height="466" rx="24" fill="#FFFFFF" stroke="#E5EBF2"/>
+  <rect x="1030" y="294" width="266" height="466" rx="24" fill="#FFFFFF" stroke="#E5EBF2"/>
+
+  <text x="126" y="332" fill="#2A3850" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="22" font-weight="700">Clientes encontrados</text>
+  <text x="1060" y="332" fill="#2A3850" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="22" font-weight="700">Informacoes</text>
+
+  <g fill="#7C8DA3" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="14" font-weight="700">
+    <text x="126" y="372">CODIGO</text>
+    <text x="230" y="372">NOME</text>
+    <text x="670" y="372">CPF/CNPJ</text>
+    <text x="860" y="372">CIDADE</text>
+  </g>
+
+  <g>
+    <rect x="120" y="392" width="852" height="52" rx="12" fill="#F8FAFC"/>
+    <rect x="120" y="454" width="852" height="52" rx="12" fill="#FFFFFF"/>
+    <rect x="120" y="516" width="852" height="52" rx="12" fill="#F8FAFC"/>
+    <rect x="120" y="578" width="852" height="52" rx="12" fill="#FFFFFF"/>
+    <rect x="120" y="640" width="852" height="52" rx="12" fill="#F8FAFC"/>
+  </g>
+
+  <g fill="#334257" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="15">
+    <text x="142" y="424">27523</text>
+    <text x="230" y="424">Claudecy Pinheiro Neres</text>
+    <text x="670" y="424">614.007.263-87</text>
+    <text x="860" y="424">Paco do Lumiar/MA</text>
+
+    <text x="142" y="486">27524</text>
+    <text x="230" y="486">Eneildo Oliveira de Jesus</text>
+    <text x="670" y="486">491.064.065-72</text>
+    <text x="860" y="486">Salvador/BA</text>
+
+    <text x="142" y="548">27525</text>
+    <text x="230" y="548">Mayara Gomes</text>
+    <text x="670" y="548">390.651.528-14</text>
+    <text x="860" y="548">Campinas/SP</text>
+  </g>
+
+  <g>
+    <rect x="1060" y="372" width="206" height="64" rx="18" fill="#F7FBF8"/>
+    <rect x="1060" y="450" width="206" height="64" rx="18" fill="#F7FBF8"/>
+    <rect x="1060" y="528" width="206" height="64" rx="18" fill="#F7FBF8"/>
+    <rect x="1060" y="606" width="206" height="120" rx="18" fill="#F7FBF8"/>
+    <text x="1082" y="400" fill="#75859A" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="14">Quantidade de contatos</text>
+    <text x="1082" y="425" fill="#2A3850" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="28" font-weight="700">12.500</text>
+    <text x="1082" y="478" fill="#75859A" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="14">Estados</text>
+    <text x="1082" y="503" fill="#2A3850" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="28" font-weight="700">27</text>
+    <text x="1082" y="556" fill="#75859A" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="14">Cidades</text>
+    <text x="1082" y="581" fill="#2A3850" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="28" font-weight="700">2.100+</text>
+    <text x="1082" y="636" fill="#2A3850" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="18" font-weight="700">Top estados</text>
+    <text x="1082" y="670" fill="#5E6F84" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="15">SP</text>
+    <text x="1242" y="670" text-anchor="end" fill="#2A3850" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="15" font-weight="700">3.480</text>
+    <text x="1082" y="700" fill="#5E6F84" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="15">RJ</text>
+    <text x="1242" y="700" text-anchor="end" fill="#2A3850" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="15" font-weight="700">1.740</text>
+  </g>
+
+  <rect x="1140" y="72" width="156" height="52" rx="16" fill="#33B05A"/>
+  <text x="1167" y="104" fill="#FFFFFF" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="16" font-weight="700">Incluir cadastro</text>
+</svg>
